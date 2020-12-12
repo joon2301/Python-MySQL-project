@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title> Rental </title>
+	</head>
+	<body>
+		<form method="GET" action="/search_m">
+			<div>
+       		 		<label for="movie"> Movie Name: </label>
+       		 		<input type="text" name="movie">
+				<select name="genre">
+   					<option value="">Genre</option>
+   					<option value="Drama">Drama</option>
+    					<option value="Comedy">Comedy</option>
+    					<option value="Romance">Romance</option>
+					<option value="Horror">Horror</option>
+				</select>
+		 	</div>
+        			<div class='button'>
+            				<button type="submit"> Search</button>
+        			</div>
+    		</form>	
+		<form method="GET" action="/search_a">
+			<div>
+       		 		<label for="actor"> Actor Name: </label>
+       		 		<input type="text" name="actor">
+		 	</div>
+        			<div class='button'>
+            				<button type="submit"> Search</button>
+        			</div>
+    		</form>
+		<div>
+			<p>Seach result for: {{data}} {{genre}}</p>
+			
+ 			<script language="javascript" type="text/javascript">
+				var search = {{searchData|tojson}}
+				for (var i=0; i<search.length ;i++ ){
+					for (var j =0; j<search[i].length; j++){
+         						document.write( search[i][j] + "\t\t");
+					}
+					document.write("<br>");
+       				}
+   			</script>
+		</div>
+		<form method="GET" action="/wishlist">
+			<div>
+       		 		<label for="movieID"> Movie number: </label>
+       		 		<input type="number" name="movieID">
+		 	
+            				<button type="submit"> Add to wishlist </button>
+        			</div>
+    		</form>
+		<p> {{message}} </p>
+		<button type="button" onClick="location.href='_main'"> Back to main page 		</button>
+	</body>
+</html>

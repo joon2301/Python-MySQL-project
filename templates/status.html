@@ -1,0 +1,50 @@
+<html>
+<head><title> My rentals </title></head>
+<body>
+	<p> Customer: {{CustomerID}}'s Rented Movies:</p>
+	<script language="javascript" type="text/javascript">
+		var rent = {{myRentals|tojson}}
+		for (var i=0; i<rent.length ;i++ ){
+			for (var j =0; j<rent[i].length; j++){
+         				document.write( rent[i][j] +"\t\t");
+			}
+			document.write("<br>");
+       		}
+   	</script>
+	<form method="GET" action="/return">
+			<div>
+       		 		<label for="movieID_return"> Movie number: </label>
+       		 		<input type="number" name="movieID_return">
+		 		<select name="rating">
+   					<option value="">Rating</option>
+   					<option value="0">0</option>
+    					<option value="1">1</option>
+    					<option value="2">2</option>
+					<option value="4">3</option>
+					<option value="5">5</option>
+				</select>
+            				<button type="submit"> Return this movie </button>
+        			</div>
+    	</form>
+	<p> My wishlist: </p>
+	<script language="javascript" type="text/javascript">
+		var queue = {{Queue|tojson}}
+		for (var i=0; i<queue.length ;i++ ){
+			for (var j =0; j<queue[i].length; j++){
+         				document.write( queue[i][j] + "\t\t");
+			}
+			document.write("<br>");
+       		}
+   	</script>
+
+	<form method="GET" action="/rental">
+			<div>
+       		 		<label for="movieID_rental"> Movie number: </label>
+       		 		<input type="number" name="movieID_rental">
+            				<button type="submit"> Rent this movie </button>
+        			</div>
+    	</form>
+	<p> {{message}} </p>
+	<button type="button" onClick="location.href='_main'"> Back to main page </button>
+</body>
+</html>

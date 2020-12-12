@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title> MY Information </title>
+	</head>
+	<body>
+			<div>
+			<p>Customer: {{ID}}'s information</p>
+			
+ 			<script language="javascript" type="text/javascript">
+var label = ["Last Name: ","First Name: ", "Address: ", "City: ", "State: ","Zip Code: ","Telephone: ","Email: ", "CreditCard: ", "Account Type: ", "Account Create Date: "];
+				var data = {{Data|tojson}}
+					for (var j =1; j<12; j++){
+         						document.write( label[j-1]+data[0][j] + "\t\t<br>");
+					}
+   			</script>
+			</div>
+		<button type="button" onClick="location.href='_main'"> Back to main page </button>
+	</body>
+</html>
